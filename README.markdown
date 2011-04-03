@@ -7,7 +7,9 @@ For this sample I use the both fantastics [kaminari](https://github.com/amatsuda
 ### running it:
 
 `bundle`
+
 `rake db:migrate`
+
 `rails s`
 
 
