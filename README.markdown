@@ -30,3 +30,5 @@ For this sample I use the both fantastics [kaminari](https://github.com/amatsuda
         end
       end
     end
+
+and something I've monkeypatched in kaminari for passing params page=1 for the [first page](https://github.com/tejo/session_persisted_params/blob/master/config/initializers/kaminari_ext.rb) 
