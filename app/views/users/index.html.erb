@@ -1,0 +1,38 @@
+<h1>Listing users</h1>
+<div>
+  <%= form_for @search do |f| %>
+    <%= f.label :email_or_message_contains %>
+    <%= f.text_field :email_or_message_contains %>
+    <input type="hidden" name="page" value="1">
+    <%= f.submit %>
+  <% end %>
+</div>
+<table>
+  <tr>
+    <th><%= sort_link @search, :first_name, {:page => 1} %></th>
+    <th><%= sort_link @search, :last_name, {:page => 1} %></th>
+    <th><%= sort_link @search, :email, {:page => 1} %></th>
+    <th><%= sort_link @search, :message , {:page => 1} %></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.first_name %></td>
+    <td><%= user.last_name %></td>
+    <td><%= user.email %></td>
+    <td><%= user.message %></td>
+    <td><%= link_to 'Show', user %></td>
+    <td><%= link_to 'Edit', edit_user_path(user) %></td>
+    <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<%= paginate @users %>
+<br />
+
+<%= link_to 'New User', new_user_path %>
