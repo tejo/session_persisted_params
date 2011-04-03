@@ -15,20 +15,18 @@ For this sample I use the both fantastics [kaminari](https://github.com/amatsuda
 
 ### all happens in application controller:
 
-  before_filter :persist_params, :only => :index
+    before_filter :persist_params, :only => :index
+    def persisted_params
+      (self.class.to_s + "_persisted").to_sym
+    end
 
-  def persisted_params
-    (self.class.to_s + "_persisted").to_sym
-  end
-
-
-  def persist_params
-    session[persisted_params] ||= {} 
-    [:page, :search].each do |k|
-      if params[k] then
-        session[persisted_params][k] = params[k]
-      elsif session[persisted_params][k]
-        params[k] = session[persisted_params][k]
+    def persist_params
+      session[persisted_params] ||= {} 
+      [:page, :search].each do |k|
+        if params[k] then
+          session[persisted_params][k] = params[k]
+        elsif session[persisted_params][k]
+          params[k] = session[persisted_params][k]
+        end
       end
     end
-  end
