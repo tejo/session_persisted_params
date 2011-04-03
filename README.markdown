@@ -15,7 +15,6 @@ For this sample I use the both fantastics [kaminari](https://github.com/amatsuda
 
 ### all happens in application controller:
 
-` ....
   before_filter :persist_params, :only => :index
 
   def persisted_params
@@ -33,7 +32,3 @@ For this sample I use the both fantastics [kaminari](https://github.com/amatsuda
       end
     end
   end
-  ......
-
-`
-
